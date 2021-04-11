@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./src/watcher.js"></script>
+  <script src="./src/observer.js"></script>
+  <script src="./src/compiler.js"></script>
+  <script src="./src/vue.js"></script>
+</head>
+<body>
+  <div id='app'>
+    <!-- <p> msg 的内容是：{{msg}} </p> -->
+    <p>{{msg}}</p>
+    <p v-html="msg" title="哈哈"></p>
+    <p v-text="obj.info" title="哈哈"></p>
+    <p v-text="msg" title="哈哈"></p>
+    <!-- <p v-text="obj.info" title="呵呵"></p> -->
+    <input type="text" v-model="obj.info">
+    <input type="button" v-on:click="clickFn" value="按钮">
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello world!',
+        obj: {
+          info: 'info',
+        },
+        // arr: ['aa', 'bb', 'cc'],
+      },
+      methods: {
+        clickFn() {
+          console.log('click: ', this.$data.msg);
+          this.$data.msg = "呵呵"
+          this.$data.obj.info = "测试"
+        }
+      },
+    })
+    // console.log(vm);
+  </script>
+</body>
+</html>
